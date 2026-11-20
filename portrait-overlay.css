@@ -1,8 +1,8 @@
 /* The existing reflection and mobile reveal state also work without this stylesheet. */
 #kadromuz .portrait-overlay {
-  --band: clamp(78px, 24%, 102px);
+  --band: clamp(44px, 12%, 51px);
   --emblem-size: clamp(72px, 24cqw, 96px);
-  --emblem-rest: .4;
+  --emblem-rest: .32;
   --center-x: 50%;
   --center-y: 50%;
   --emblem-scale: 1;

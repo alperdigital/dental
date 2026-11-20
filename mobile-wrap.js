@@ -1,7 +1,7 @@
 const mobileWrap = matchMedia('(max-width: 680px)');
 const firstLineRatio = 0.65;
 
-function findBreak(words, width, measure, wrapBefore) {
+function findBreak(words, width, measure) {
   if (measure(words.join(' ')) <= width) return 0;
 
   let target = 0;
@@ -9,7 +9,6 @@ function findBreak(words, width, measure, wrapBefore) {
     const first = measure(words.slice(0, index).join(' '));
     const second = measure(words.slice(index).join(' '));
     if (first > width || second > width) continue;
-    if (words[index] === wrapBefore) return index;
     if (first <= width * firstLineRatio) target = index;
   }
   return target;
@@ -32,7 +31,7 @@ for (const label of document.querySelectorAll('[data-mobile-wrap]')) {
       nextBreak = findBreak(words, width, text => {
         probe.textContent = text;
         return probe.getBoundingClientRect().width;
-      }, label.dataset.wrapBefore);
+      });
       probe.remove();
     }
 
