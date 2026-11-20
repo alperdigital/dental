@@ -20,7 +20,7 @@ Sitenin görsel tasarımını, sayfa düzenini ve fotoğraf efektlerini ben tasa
 
 ### Mobil satır kırma
 
-Ana sayfada işaretli başlık ve etiketler, tek satıra sığmadığında ve iki satıra bölünebildiğinde kullanılabilir genişliğin %65'ine kadar olan son uygun kelimeden sonra kırılır. Ana başlıkta “Ortopedi” mobilde ayrı satırda gösterilir. Uygun bölme bulunamazsa tarayıcının satır kırma davranışı devreye girer.
+Ana başlık mobilde “Diş Hekimliği” ve “ve Ortopedi” olarak iki satırda gösterilir. Ana sayfadaki diğer işaretli etiketlerde, sondan bir önceki satır kullanılabilir genişliğin %65’ini aştığında son kelimeler alt satıra taşınabilir. Taşıma, kelime alt satıra sığıyorsa ve iki satırın doluluk farkı azalıyorsa yapılır. Uygun taşıma bulunamazsa tarayıcının satır kırma davranışı devreye girer.
 
 Özelliği geri almak için `index.html` dosyasından `mobile-wrap.js` ve `mobile-wrap.css` etiketlerini kaldırın. Tek bir başlık veya etiket için `data-mobile-wrap` niteliğini kaldırmak yeterlidir.
 
