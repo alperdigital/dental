@@ -70,7 +70,7 @@ document.querySelectorAll('[data-mirror-slat]').forEach(element => {
   });
 });
 
-const reflectedPhotos = document.querySelectorAll('[data-mirror-slat][data-mode="auto"]');
+const reflectedPhotos = document.querySelectorAll('[data-mirror-slat][data-mode="auto"], .portrait-glass');
 const mobile = matchMedia('(hover: none), (any-pointer: coarse), (max-width: 680px)');
 const revealThreshold = 0.65;
 const observer = new IntersectionObserver(entries => {

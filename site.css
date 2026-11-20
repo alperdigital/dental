@@ -79,7 +79,7 @@ section.content{padding-block:clamp(3.7rem,7vw,7rem);border-top:1px solid var(--
 .portrait-reflection{--portrait-edge-mask:linear-gradient(90deg,#000 0 13%,transparent 30% 70%,#000 87% 100%);position:absolute;inset:0;pointer-events:none;opacity:var(--portrait-reflection-opacity,.68);-webkit-mask-image:var(--portrait-edge-mask);mask-image:var(--portrait-edge-mask);transition:opacity 420ms ease}
 .portrait-reflection img{transform:var(--portrait-glass-offset,translateX(3%) scale(1.07));transition:transform 420ms cubic-bezier(.25,.75,.22,1)}
 .portrait-glass::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#ffffff43,transparent 19% 81%,#ffffff30);opacity:var(--portrait-reflection-opacity,.68);transition:opacity 420ms ease}
-.card:has(a:focus-visible) .portrait-glass{--portrait-reflection-opacity:0;--portrait-glass-offset:none}
+.portrait-glass[data-revealed],.card:has(a:focus-visible) .portrait-glass{--portrait-reflection-opacity:0;--portrait-glass-offset:none}
 @media(hover:hover) and (pointer:fine){
   .card:hover .portrait-glass{--portrait-reflection-opacity:0;--portrait-glass-offset:none}
 }
