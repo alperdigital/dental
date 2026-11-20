@@ -22,6 +22,11 @@
 }
 
 @media (max-width: 680px) {
+  .detail h1 {
+    font-size: clamp(1.2rem, 6.15vw, 2.5rem);
+    white-space: nowrap;
+  }
+
   .profile-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-flow: row;
