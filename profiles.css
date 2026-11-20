@@ -41,3 +41,59 @@
     grid-column: 1 / -1;
   }
 }
+
+@media (min-width: 681px) {
+  .physician-profile {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: clamp(2rem, 5vw, 5.5rem);
+    max-width: 1080px;
+  }
+
+  .physician-profile > .link,
+  .physician-profile > h1,
+  .physician-profile > .lede,
+  .profile-bio {
+    grid-column: 1;
+  }
+
+  .physician-profile > .link {
+    justify-self: start;
+  }
+
+  .physician-profile > h1 {
+    margin-block: .55rem .75rem;
+    font-size: clamp(2.4rem, 4.65vw, 5rem);
+  }
+
+  .physician-profile img.detail-portrait {
+    grid-column: 2;
+    grid-row: 2 / span 3;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    margin-top: .55rem;
+    border: 1px solid var(--line);
+    border-radius: .5rem;
+  }
+
+  .profile-bio {
+    margin-top: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .profile-bio h2 {
+    font-size: clamp(1.65rem, 2.65vw, 2.45rem);
+  }
+
+  .profile-bio address {
+    margin-top: 0;
+  }
+
+  .profile-bio .profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
