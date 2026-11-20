@@ -1,0 +1,38 @@
+.profile-actions {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: fit-content;
+  max-width: 100%;
+  text-align: center;
+  align-items: stretch;
+}
+
+.detail p + p {
+  margin-top: .85rem;
+}
+
+.profile-timeline {
+  margin-block: 0 1rem;
+  padding-inline-start: 1.2rem;
+}
+
+.profile-timeline strong {
+  margin-inline-end: .5rem;
+}
+
+@media (max-width: 680px) {
+  .profile-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row;
+    width: 100%;
+  }
+
+  .profile-actions .button {
+    padding-inline: .55rem;
+  }
+
+  .profile-actions .profile-primary {
+    grid-column: 1 / -1;
+  }
+}
