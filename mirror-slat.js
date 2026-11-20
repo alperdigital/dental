@@ -33,11 +33,11 @@ class MirrorSlatImage {
     if (interactionMode === 'auto') {
       const mobile = matchMedia('(hover: none), (any-pointer: coarse), (max-width: 680px)');
       const observer = new IntersectionObserver(([entry]) => {
-        const inView = entry.isIntersecting;
+        const inView = entry.isIntersecting && entry.intersectionRatio >= 0.65;
         if (this.inView && !inView) this.manualReveal = null;
         this.inView = inView;
         this.updateReveal();
-      }, { rootMargin: '0px 0px 32px 0px' });
+      }, { threshold: 0.65 });
       const syncObserver = () => {
         if (mobile.matches) {
           observer.observe(element);

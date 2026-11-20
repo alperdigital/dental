@@ -57,6 +57,12 @@ section.content{padding-block:clamp(3.7rem,7vw,7rem);border-top:1px solid var(--
 .orthopedic-services{margin-top:clamp(2rem,5vw,4rem)}
 .orthopedic-services h4{margin-bottom:.35rem}
 .orthopedic-services p{margin-bottom:.85rem}
+@media(max-width:680px){
+  .service-navigation{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch}
+  .service-navigation .button{text-align:center}
+  .service-heading-divider{display:none}
+  .service-specialty{display:block;margin-top:.2rem}
+}
 @media(max-width:680px){.services ul{columns:1}}
 .treatment-link{display:block;position:relative;isolation:isolate;overflow:hidden;border-radius:3px;color:white}
 .treatment-link .mirror{aspect-ratio:4/4.65}
