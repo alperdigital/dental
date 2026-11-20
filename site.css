@@ -60,6 +60,8 @@ section.content{padding-block:clamp(3.7rem,7vw,7rem);border-top:1px solid var(--
 @media(max-width:680px){
   .service-navigation{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch}
   .service-navigation .button{text-align:center}
+  .orthopedic-nav-divider{display:none}
+  .orthopedic-nav-name{display:block;white-space:nowrap}
   .service-heading-divider{display:none}
   .service-specialty{display:block;margin-top:.2rem}
 }
