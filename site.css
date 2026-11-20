@@ -15,6 +15,11 @@ a{color:inherit}
 .top{border-bottom:1px solid var(--line);background:#fbfaf7}
 .nav{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:1.25rem}
 .brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;font-weight:650;letter-spacing:-.02em}
+.brand span{white-space:nowrap}
+@media(max-width:680px){
+  .brand{display:grid;gap:.1rem;font-size:clamp(.8rem,3.5vw,1rem);line-height:1.3}
+  .brand .brand-divider{display:none}
+}
 .mark{width:38px;height:38px;flex:none;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center;font:.9rem Georgia,serif}
 .nav-links,.actions{display:flex;align-items:center;gap:clamp(.75rem,2vw,2rem);flex-wrap:wrap}
 .nav-links{flex-wrap:nowrap;gap:clamp(1rem,2.15vw,2rem)}

@@ -31,13 +31,13 @@ class MirrorSlatImage {
       this.updateReveal();
     });
     if (interactionMode === 'auto') {
-      const mobile = matchMedia('(hover: none), (pointer: coarse), (max-width: 680px)');
+      const mobile = matchMedia('(hover: none), (any-pointer: coarse), (max-width: 680px)');
       const observer = new IntersectionObserver(([entry]) => {
-        const inView = entry.isIntersecting && entry.intersectionRatio >= 0.65;
+        const inView = entry.isIntersecting;
         if (this.inView && !inView) this.manualReveal = null;
         this.inView = inView;
         this.updateReveal();
-      }, { threshold: 0.65 });
+      }, { rootMargin: '0px 0px 32px 0px' });
       const syncObserver = () => {
         if (mobile.matches) {
           observer.observe(element);
