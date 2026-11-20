@@ -210,3 +210,25 @@ img{-webkit-touch-callout:none}
     object-position: center 56%;
   }
 }
+
+.privacy-dialog {
+  width: min(100% - 2rem, 44rem);
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.privacy-dialog::backdrop { background: #20292399; }
+.privacy-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.privacy-dialog-header h2,
+.privacy-dialog section h2 { font-size: clamp(1.3rem, 4vw, 2rem); }
+.privacy-dialog section h2 { margin-block: 1.25rem .4rem; }
+.privacy-dialog .button { flex-shrink: 0; }
