@@ -74,7 +74,15 @@ section.content{padding-block:clamp(3.7rem,7vw,7rem);border-top:1px solid var(--
 .mirror{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:4/3;background:#ced5c9;container-type:inline-size;border-radius:var(--slat-radius,3px)}
 .mirror img{display:block;width:100%;height:100%;object-fit:cover}
 .profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(1rem,3vw,2rem);max-width:860px}
-.profiles .mirror{aspect-ratio:4/4.4}
+.portrait-glass{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:4/4.4;border-radius:3px;background:#d9ddd5}
+.portrait-glass img{display:block;width:100%;height:100%;object-fit:cover}
+.portrait-reflection{--portrait-edge-mask:linear-gradient(90deg,#000 0 13%,transparent 30% 70%,#000 87% 100%);position:absolute;inset:0;pointer-events:none;opacity:var(--portrait-reflection-opacity,.68);-webkit-mask-image:var(--portrait-edge-mask);mask-image:var(--portrait-edge-mask);transition:opacity 420ms ease}
+.portrait-reflection img{transform:var(--portrait-glass-offset,translateX(3%) scale(1.07));transition:transform 420ms cubic-bezier(.25,.75,.22,1)}
+.portrait-glass::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#ffffff43,transparent 19% 81%,#ffffff30);opacity:var(--portrait-reflection-opacity,.68);transition:opacity 420ms ease}
+.card:has(a:focus-visible) .portrait-glass{--portrait-reflection-opacity:0;--portrait-glass-offset:none}
+@media(hover:hover) and (pointer:fine){
+  .card:hover .portrait-glass{--portrait-reflection-opacity:0;--portrait-glass-offset:none}
+}
 .profiles .portrait-merve{object-position:center 68%}
 .profiles .portrait-abdulbaki{object-position:center 62%}
 .detail img.detail-portrait{width:min(100%,380px);height:auto;border-radius:3px}
@@ -175,4 +183,4 @@ button:disabled{opacity:.75;cursor:default}
 .detail figcaption{margin-top:.35rem;font-size:.875rem}
 @media(max-width:1000px){.wrap{width:calc(100% - 3rem)}.nav{display:grid;grid-template-columns:1fr auto;gap:0 1rem;padding-top:.7rem}.nav>.button{grid-column:2;grid-row:1}.nav-links{grid-column:1/-1;grid-row:2;overflow-x:auto;padding:.2rem .35rem;gap:1.3rem;scrollbar-width:thin}.nav-links a{flex:none}.hero{gap:1.5rem}}
 @media(max-width:680px){.wrap{width:calc(100% - 2rem)}.nav>.button{min-height:42px;padding:.45rem .7rem;font-size:.86rem}.nav-links{gap:1rem}.hero,.split{grid-template-columns:1fr}.hero{padding-block:2.5rem 2rem}.hero img{height:auto;aspect-ratio:4/3}.section-head{display:block}.section-head p{margin-top:.8rem}.cards,.steps{grid-template-columns:1fr}.cards{gap:2rem}.treatment-grid{gap:1rem}.steps{gap:1.25rem}.mirror{aspect-ratio:16/10}.treatment-link .mirror{aspect-ratio:4/3}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mirror-slats,.mirror .mirror-reflection,.mirror-slat::after,.mirror-slats::before,.mirror-slats::after{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mirror-slats,.mirror .mirror-reflection,.mirror-slat::after,.mirror-slats::before,.mirror-slats::after,.portrait-reflection,.portrait-reflection img,.portrait-glass::after{transition:none}}

@@ -22,23 +22,6 @@ class MirrorSlatImage {
     element.style.setProperty('--slat-radius', borderRadius);
     element.style.setProperty('--slat-finish', `${animationDuration + (this.slatCount - 1) * staggerDelay}ms`);
     element.dataset.mode = interactionMode;
-    if (interactionMode === 'auto') {
-      const mobile = matchMedia('(hover: none), (any-pointer: coarse), (max-width: 680px)');
-      const observer = new IntersectionObserver(([entry]) => {
-        const inView = entry.isIntersecting && entry.intersectionRatio >= 0.65;
-        element.toggleAttribute('data-revealed', inView);
-      }, { threshold: 0.65 });
-      const syncObserver = () => {
-        if (mobile.matches) {
-          observer.observe(element);
-        } else {
-          observer.disconnect();
-          element.removeAttribute('data-revealed');
-        }
-      };
-      mobile.addEventListener('change', syncObserver);
-      syncObserver();
-    }
     if (this.image.complete && this.image.naturalWidth) {
       this.mount();
     } else {
@@ -86,3 +69,23 @@ document.querySelectorAll('[data-mirror-slat]').forEach(element => {
     distortionStrength: Number(element.dataset.distortionStrength),
   });
 });
+
+const reflectedPhotos = document.querySelectorAll('[data-mirror-slat][data-mode="auto"]');
+const mobile = matchMedia('(hover: none), (any-pointer: coarse), (max-width: 680px)');
+const revealThreshold = 0.65;
+const observer = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    entry.target.toggleAttribute('data-revealed', entry.isIntersecting && entry.intersectionRatio >= revealThreshold);
+  }
+}, { threshold: revealThreshold });
+
+function syncScrollReveal() {
+  if (mobile.matches) {
+    reflectedPhotos.forEach(photo => observer.observe(photo));
+  } else {
+    observer.disconnect();
+    reflectedPhotos.forEach(photo => photo.removeAttribute('data-revealed'));
+  }
+}
+mobile.addEventListener('change', syncScrollReveal);
+syncScrollReveal();
