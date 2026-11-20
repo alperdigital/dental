@@ -118,15 +118,9 @@ section.content{padding-block:clamp(3.7rem,7vw,7rem);border-top:1px solid var(--
 }
 .mirror:is([data-revealed], [data-mode="auto"]:where(.card:has(a:focus-visible) *)){--reflection-transform:none;--reflection-light:0;--slat-visibility:hidden;--slat-hide-delay:var(--slat-finish)}
 @media (hover:hover) and (pointer:fine){
-  .card:hover:not(:has(.mirror-toggle:hover)) .mirror[data-mode="auto"]{--reflection-transform:none;--reflection-light:0;--slat-visibility:hidden;--slat-hide-delay:var(--slat-finish)}
+  .card:hover .mirror[data-mode="auto"]{--reflection-transform:none;--reflection-light:0;--slat-visibility:hidden;--slat-hide-delay:var(--slat-finish)}
 }
-.mirror-toggle{display:none;position:absolute;z-index:3;inset:12px 12px auto auto;min-height:44px;border:1px solid #f5f0df66;border-radius:3px;background:#17251deb;color:white;padding:.45rem .72rem;font:600 .875rem/1.2 system-ui,sans-serif;cursor:pointer}
-.mirror-toggle span:last-child,.mirror-toggle[aria-pressed="true"] span:first-child{display:none}
-.mirror-toggle[aria-pressed="true"] span:last-child{display:inline}
-.card:has(.mirror[data-ready][data-mode="toggle"]) .mirror-toggle{display:block}
-@media (hover:none),(pointer:coarse),(any-pointer:coarse),(max-width:680px){
-  .card:has(.mirror[data-ready]) .mirror-toggle{display:block}
-}
+
 .visit{background:#e8ede4}
 .visit .section-head .eyebrow{margin:0 0 .45rem;color:var(--green)}
 .step{border-top:1px solid #a8b6a8;padding-top:1.15rem}

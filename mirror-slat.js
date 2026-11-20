@@ -22,30 +22,18 @@ class MirrorSlatImage {
     element.style.setProperty('--slat-radius', borderRadius);
     element.style.setProperty('--slat-finish', `${animationDuration + (this.slatCount - 1) * staggerDelay}ms`);
     element.dataset.mode = interactionMode;
-    const card = element.closest('.card');
-    this.toggle = card.querySelector('.mirror-toggle');
-    this.inView = false;
-    this.manualReveal = null;
-    this.toggle.addEventListener('click', () => {
-      this.manualReveal = !element.hasAttribute('data-revealed');
-      this.updateReveal();
-    });
     if (interactionMode === 'auto') {
       const mobile = matchMedia('(hover: none), (any-pointer: coarse), (max-width: 680px)');
       const observer = new IntersectionObserver(([entry]) => {
         const inView = entry.isIntersecting && entry.intersectionRatio >= 0.65;
-        if (this.inView && !inView) this.manualReveal = null;
-        this.inView = inView;
-        this.updateReveal();
+        element.toggleAttribute('data-revealed', inView);
       }, { threshold: 0.65 });
       const syncObserver = () => {
         if (mobile.matches) {
           observer.observe(element);
         } else {
           observer.disconnect();
-          this.inView = false;
-          this.manualReveal = null;
-          this.updateReveal();
+          element.removeAttribute('data-revealed');
         }
       };
       mobile.addEventListener('change', syncObserver);
@@ -56,12 +44,6 @@ class MirrorSlatImage {
     } else {
       this.image.addEventListener('load', () => this.mount(), { once: true });
     }
-  }
-
-  updateReveal() {
-    const revealed = this.manualReveal ?? this.inView;
-    this.toggle.setAttribute('aria-pressed', String(revealed));
-    this.element.toggleAttribute('data-revealed', revealed);
   }
 
   mount() {
