@@ -1,0 +1,99 @@
+.nav-links svg,
+.nav-links .mobile-booking {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  html {
+    --dock-space: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: var(--dock-space);
+  }
+
+  body {
+    padding-bottom: var(--dock-space);
+  }
+
+  .top .nav {
+    display: flex;
+    min-height: 64px;
+    padding-block: .7rem;
+  }
+
+  .top .nav > .button {
+    display: none;
+  }
+
+  .nav .nav-links {
+    position: fixed;
+    z-index: 4;
+    bottom: max(.5rem, env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(31rem, calc(100% - 1rem));
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(4.5rem, 1.4fr) repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: .125rem;
+    padding: .35rem;
+    overflow: visible;
+    border: 1px solid #d9dacf;
+    border-radius: 1.35rem;
+    background: #fbfaf7;
+    box-shadow: 0 8px 28px #1728212b, 0 1px 4px #17282114;
+  }
+
+  .nav-links a,
+  .nav-links .mobile-booking {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .18rem;
+    min-width: 0;
+    min-height: 48px;
+    padding: .2rem .1rem;
+    border-radius: .9rem;
+    color: #294337;
+    font-size: .6875rem;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+
+  .nav-links a:focus-visible {
+    outline-offset: 0;
+  }
+
+  .nav-links svg {
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    flex: none;
+  }
+
+  .nav-links a[aria-current="page"],
+  .nav-links a:not(.mobile-booking):active {
+    background: #e7ede5;
+  }
+
+  .nav-links .mobile-booking {
+    min-height: 54px;
+    border: 1px solid #cbaa73;
+    border-radius: 999px;
+    background: #223d30;
+    color: #fff9ea;
+    box-shadow: 0 2px 7px #223d3033;
+    font-size: .75rem;
+    font-weight: 700;
+  }
+
+  .nav-links .mobile-booking svg {
+    color: #eed6a6;
+  }
+
+  .nav-links .mobile-booking:active {
+    background: #152b21;
+  }
+}

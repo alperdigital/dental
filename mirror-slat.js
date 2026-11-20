@@ -54,6 +54,7 @@ class MirrorSlatImage {
       const reflection = this.image.cloneNode();
       reflection.alt = '';
       reflection.loading = 'eager';
+      reflection.draggable = false;
       reflection.classList.add('mirror-reflection');
       slat.append(reflection);
       layer.append(slat);

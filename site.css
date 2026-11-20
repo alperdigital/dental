@@ -184,3 +184,6 @@ button:disabled{opacity:.75;cursor:default}
 @media(max-width:1000px){.wrap{width:calc(100% - 3rem)}.nav{display:grid;grid-template-columns:1fr auto;gap:0 1rem;padding-top:.7rem}.nav>.button{grid-column:2;grid-row:1}.nav-links{grid-column:1/-1;grid-row:2;overflow-x:auto;padding:.2rem .35rem;gap:1.3rem;scrollbar-width:thin}.nav-links a{flex:none}.hero{gap:1.5rem}}
 @media(max-width:680px){.wrap{width:calc(100% - 2rem)}.nav>.button{min-height:42px;padding:.45rem .7rem;font-size:.86rem}.nav-links{gap:1rem}.hero,.split{grid-template-columns:1fr}.hero{padding-block:2.5rem 2rem}.hero img{height:auto;aspect-ratio:4/3}.section-head{display:block}.section-head p{margin-top:.8rem}.cards,.steps{grid-template-columns:1fr}.cards{gap:2rem}.treatment-grid{gap:1rem}.steps{gap:1.25rem}.mirror{aspect-ratio:16/10}.treatment-link .mirror{aspect-ratio:4/3}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mirror-slats,.mirror .mirror-reflection,.mirror-slat::after,.mirror-slats::before,.mirror-slats::after,.portrait-reflection,.portrait-reflection img,.portrait-glass::after{transition:none}}
+
+/* Suppress the image callout where the touch browser supports it. */
+img{-webkit-touch-callout:none}

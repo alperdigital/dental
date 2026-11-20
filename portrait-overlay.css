@@ -1,0 +1,106 @@
+/* The existing reflection and mobile reveal state also work without this stylesheet. */
+#kadromuz .portrait-overlay {
+  --band: clamp(78px, 24%, 102px);
+  --emblem-size: clamp(72px, 24cqw, 96px);
+  --emblem-rest: .4;
+  --center-x: 50%;
+  --center-y: 50%;
+  --emblem-scale: 1;
+  --opening: 0%;
+  --name-opacity: 0;
+  --name-offset: .45rem;
+  --name-delay: 0ms;
+  --reveal-duration: 680ms;
+  --reveal-ease: cubic-bezier(.22, .8, .24, 1);
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  color: #f7f0de;
+  pointer-events: none;
+}
+
+#kadromuz .portrait-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, #d6b47b19, transparent 38%),
+    linear-gradient(180deg, #122622b0, #172b26d9 54%, #10201cfa);
+  box-shadow: inset 0 0 0 1px #cfb77d55;
+  clip-path: inset(var(--opening) 0 0);
+  transition: clip-path var(--reveal-duration) var(--reveal-ease);
+}
+
+#kadromuz .portrait-overlay-emblem {
+  position: absolute;
+  left: var(--center-x);
+  top: var(--center-y);
+  display: grid;
+  place-items: center;
+  width: var(--emblem-size);
+  aspect-ratio: 1;
+  border: 1px solid #dfbf81;
+  border-radius: 50%;
+  color: #f1d79d;
+  background: #12251ed9;
+  box-shadow: 0 0 0 6px #dfbf8126, 0 10px 28px #07171370;
+  transform: translate(-50%, -50%) scale(var(--emblem-scale));
+  transition:
+    top var(--reveal-duration) var(--reveal-ease),
+    left var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+#kadromuz .portrait-overlay-emblem svg {
+  width: 60%;
+  height: auto;
+}
+
+#kadromuz .portrait-overlay-name {
+  position: absolute;
+  inset: auto .75rem 0 3.65rem;
+  display: flex;
+  align-items: center;
+  height: var(--band);
+  font: 400 clamp(1rem, 5.8cqw, 1.45rem)/1.2 Georgia, serif;
+  overflow-wrap: anywhere;
+  opacity: var(--name-opacity);
+  transform: translateY(var(--name-offset));
+  transition: opacity 180ms ease var(--name-delay), transform 230ms ease var(--name-delay);
+}
+
+#kadromuz .portrait-glass {
+  container-type: inline-size;
+}
+
+#kadromuz .portrait-glass[data-revealed] .portrait-overlay,
+#kadromuz .card:has(.link:focus-visible) .portrait-overlay {
+  --opening: calc(100% - var(--band));
+  --center-x: 1.9rem;
+  --center-y: calc(100% - var(--band) / 2);
+  --emblem-scale: var(--emblem-rest);
+  --name-opacity: 1;
+  --name-offset: 0px;
+  --name-delay: 330ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #kadromuz .card:hover .portrait-overlay {
+    --opening: calc(100% - var(--band));
+    --center-x: 1.9rem;
+    --center-y: calc(100% - var(--band) / 2);
+    --emblem-scale: var(--emblem-rest);
+    --name-opacity: 1;
+    --name-offset: 0px;
+    --name-delay: 330ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #kadromuz .portrait-overlay::before,
+  #kadromuz .portrait-overlay-emblem,
+  #kadromuz .portrait-overlay-name {
+    transition: none;
+  }
+}

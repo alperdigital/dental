@@ -1,0 +1,11 @@
+@media (max-width: 680px) {
+  [data-mobile-wrap] {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .hero h1[data-mobile-wrap] {
+    font-size: clamp(2.5rem, 7.5vw, 3.3rem);
+  }
+}
